@@ -6,7 +6,7 @@ var Library = function() {
 //Library instantiation, creating empty books array
 this.library = new Library();
 
-//Book constructor, with object properties - AKA Book skeleton
+//Book constructor, with object properties - AKA Book blueprint
 var Book = function(objectWithArgs) {
   this.title = objectWithArgs.title;
   this.author = objectWithArgs.author;
@@ -25,14 +25,8 @@ Library.prototype.addBook = function(book) {
   return true;
 };
 
-var bookOne = new Book({title:"Coding for Dummies", authorName:"Nikhil Abraham", numberOfPages: 303, publishDate: "01/01/1999"});
-var bookTwo = new Book({title:"Javascript: the definitive guide", authorName:"David Flanagan", numberOfPages: 453, publishDate: "01/01/1999"});
-var bookThree = new Book({title:"Front-end web development: the Big Nerd Ranch Guide", authorName:"Chris Aquino", numberOfPages: 546, publishDate: "01/01/1999"});
-var bookFour = new Book({title:"Web Development Foundations: Full-Stack vs Front-End", authorName:"Ray Villalobos", numberOfPages: 1010, publishDate: "01/01/1999"});
-var bookFive = new Book({title:"Getting a coding job for dummies", authorName:"Nikhil Abraham", numberOfPages: 297, publishDate: "01/01/1999"});
-
-//RemoveBookByTitle functionality
-Library.prototype.removeBookByTitle = function(title) {
+//RemoveBooksByTitle functionality
+Library.prototype.removeBooksByTitle = function(title) {
   for (var i = 0; i < this.books.length; i++) { //loop/iterate through all indeces of books
     if (this.books[i].title === title) { //check if string matches title of current index in books
         this.books.splice(i, 1); //delete index of array
@@ -45,8 +39,8 @@ Library.prototype.removeBookByTitle = function(title) {
 //RemoveBooksByAuthor functionality
 Library.prototype.removeBooksByAuthor = function(authorName) {
   var temp = []; //create a new empty array in scope of function
-  for (var i = 0; i < this.books.length; i++) { //loop/iterate through all indeces of books
-    if (this.books[i].authorName !== authorName) { //check if string does not match authorName of current index in books
+  for (var i = 0; i < this.books.length; i++) {
+    if (this.books[i].author !== authorName) { //check if string does not match authorName of current index in books
       temp.push(this.books[i]); //return book object(s) as array
     }
   }
@@ -59,7 +53,7 @@ Library.prototype.removeBooksByAuthor = function(authorName) {
 
 //GetRandomBook functionality
 Library.prototype.getRandomBook = function() {
-  if (this.books.length == 0) { //check if array is empty
+  if (this.books.length === 0) { //check if array is empty
     return null;
   }
     return this.books[Math.floor(Math.random()*this.books.length)]; //otherwise, return random book object
@@ -80,7 +74,7 @@ Library.prototype.getBooksByTitle = function(title) {
 Library.prototype.getBooksByAuthor = function(authorName) {
   var temp = []; //create new empty array in scope of function
   for (var i = 0; i < this.books.length; i++) { //loop/iterate through all indeces of books
-    if (this.books[i].authorName.toLowerCase().indexOf(authorName.toLowerCase()) !== -1) { //check if names in books contain parameter
+    if (this.books[i].author.toLowerCase().indexOf(authorName.toLowerCase()) !== -1) { //check if names in books contain parameter
       temp.push(this.books[i]); //return book object(s)
     }
   }
@@ -98,18 +92,12 @@ Library.prototype.addBooks = function(books) {
   return bookCount;
 };
 
-var booksArray = [
-  new Book({title:"Coders at Work: Reflections on the Craft of Programming", authorName:"Peter Seibel", numberOfPages: 1303, publishDate: "01/01/1999"}),
-  new Book({title:"Code Complete: A Practical Handbook of Software Construction", authorName:"Steve McConnell", numberOfPages: 336, publishDate: "01/01/1999"}),
-  new Book({title:"The Grid", authorName:"Peter Seibel", numberOfPages: 179, publishDate: "01/01/1999"})
-];
-
 //GetAuthors functionality
 Library.prototype.getAuthors = function() {
   var temp = []; //create new empty array in scope of function
   for (var i = 0; i < this.books.length; i++) { //loop/iterate through all indeces of books
-    if (temp.indexOf(this.books[i].authorName) === -1) { //
-      temp.push(this.books[i].authorName); //return authorName values
+    if (temp.indexOf(this.books[i].author) === -1) { //
+      temp.push(this.books[i].author); //return authorName values
     }
   }
   return temp; //otherwise, return new empty array
@@ -117,8 +105,21 @@ Library.prototype.getAuthors = function() {
 
 //GetRandomAuthorName functionality
 Library.prototype.getRandomAuthorName = function() {
-  if (this.books.length == 0) { //check if array is empty
+  if (this.books.length === 0) { //check if array is empty
     return null;
   }
-    return this.books[Math.floor(Math.random()*this.books.length)].authorName; //otherwise, return random authorName string
+    return this.books[Math.floor(Math.random()*this.books.length)].author; //otherwise, return random authorName string
 };
+
+var booksArray = [
+  new Book({title:"Coders at Work: Reflections on the Craft of Programming", author:"Peter Seibel", numberOfPages: 1303, publishDate: "01/01/1999"}),
+  new Book({title:"Code Complete: A Practical Handbook of Software Construction", author:"Steve McConnell", numberOfPages: 336, publishDate: "01/01/1999"}),
+  new Book({title:"The Grid", author:"Peter Seibel", numberOfPages: 179, publishDate: "01/01/1999"})
+];
+
+//Individual books
+var gBookOne = new Book({title:"Coding for Dummies", author:"Nikhil Abraham", numberOfPages: 303, publishDate: "01/01/1999"});
+var gBookTwo = new Book({title:"Javascript: the definitive guide", author:"David Flanagan", numberOfPages: 453, publishDate: "01/01/1999"});
+var gBookThree = new Book({title:"Front-end web development: the Big Nerd Ranch Guide", author:"Chris Aquino", numberOfPages: 546, publishDate: "01/01/1999"});
+var gBookFour = new Book({title:"Web Development Foundations: Full-Stack vs Front-End", author:"Ray Villalobos", numberOfPages: 1010, publishDate: "01/01/1999"});
+var gBookFive = new Book({title:"Getting a coding job for dummies", author:"Nikhil Abraham", numberOfPages: 297, publishDate: "01/01/1999"});
