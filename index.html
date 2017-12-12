@@ -2,9 +2,119 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My Simple Library, in the key of Simple</title>
+    <title>My Local Library</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <script src="library.js"> -->
   </head>
-  <body>
-    <script src="library.js"></script>
+  <body class="container">
+    <!-- Main Div -->
+    <div>
+      <br>
+
+      <!-- Header Row -->
+      <div class="row">
+        <header>
+          <div class="col-md-3">
+            <h1 class="welcome">WELCOME</h1>
+            <h2 class="welcome">into the clouds</h2>
+          </div>
+          <div class="col-md-9">
+            <h3>My Local Library</h3>
+            <a href="#" class="admin">Admin</a>
+          </div>
+        </header>
+      </div><!--End Header Row-->
+
+      <section class="adminMgmt">
+        <!-- Add Book(s) form -->
+        <div class="row.admin">
+          <div class="col-md-12">
+            <label>Add book</label>
+            <form>
+              <label>Title:</label> <input type="text" placeholder="Coding for Dummies">
+              <label>Author:</label> <input type="text" placeholder="Peter Seibel">
+              <label>Number of pages:</label> <input type="text" placeholder="963">
+              <label>Publish date:</label> <input type="text" placeholder="01/01/1999">
+              <button type="button">Add</button>
+            </form>
+          </div>
+        </div><!--End Add Book(s) form-->
+
+        <!-- Remove Book(s) form -->
+        <div class="row.admin">
+          <div class="col-md-12">
+            <label>Remove book</label>
+            <select>
+              <option value="Title">by Title</option>
+              <option value="Author">by Author</option>
+            </select>
+            <form>
+              <label>Title:</label> <input type="text" placeholder="Coding for Dummies">
+              <label>Author:</label> <input type="text" placeholder="Peter Seibel">
+              <button type="button">Remove</button>
+            </form>
+          </div>
+        </div><!--End Remove Book(s) form-->
+      </section><!--End adminMgmt-->
+
+      <!-- Basic Search Row to retun book object(s) -->
+      <div class="row">
+        <div class="col-md-12">
+          <form class="formStyle">
+            <label>Search for</label>
+            <input type="text" class="inputStyle" placeholder="What do you want to search for?">
+            <select>
+              <option value="Keyword">by Keyword</option>
+              <option value="Title">by Title</option>
+              <option value="Author">by Author</option>
+            </select>
+            <button type="button" id="keywordSearch">GO</button>
+          </form>
+        </div>
+      </div><!--End Basic Search Row-->
+
+      <!-- Browse & Spotlight on Authors-->
+      <div class="row">
+        <div class="col-md-12">
+          <section class="browse">
+            <label>Browse</label>
+            <button type="button" id="getAllBooks">all books</button>
+            <button type="button" id="getRandomBook">I'm feeling lucky!</button>
+          </section>
+          <section class="spotlight">
+            <label>Spotlight</label>
+            <button type="button">all authors</button>
+            <button type="button">I'm feeling lucky!</button>
+          </section>
+        </div>
+      </div>
+
+      <!-- Results Row that should begin with all book objects listed-->
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <section class="centerStage">
+            <article class="bookSkeleton" id="bookResults">
+              <h4>Title:</h4>
+              <h4>Author:</h4>
+              <h4>Number of pages:</h4>
+              <h4>Publish date:</h4>
+            </article>
+          </section>
+        </div>
+        <div class="col-md-2"></div>
+      </div><!--End Results Row-->
+
+      <!-- Footer Row -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <footer class="center">Copyright &copy; 2017 My Local County - All rights reserved</footer>
+        </div>
+        <div class="col-md-1"></div>
+      </div><!--End Footer Row-->
+
+    </div><!--End Main Div-->
   </body>
 </html>

@@ -57,6 +57,7 @@ Library.prototype.getRandomBook = function() {
     return null;
   }
     return this.books[Math.floor(Math.random()*this.books.length)]; //otherwise, return random book object
+    //document.getElementById("bookResults").innerHTML = 
 };
 
 //GetBooksByTitle functionality
@@ -110,6 +111,17 @@ Library.prototype.getRandomAuthorName = function() {
   }
     return this.books[Math.floor(Math.random()*this.books.length)].author; //otherwise, return random authorName string
 };
+
+// Integration
+
+document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+document.getElementById("getRandomBook").addEventListener("click, this.getRandomBook");
+document.getElementById("getAuthors").addEventListener("click", [function to get all books?]);
+document.getElementById("getRandomAuthorName").addEventListener("click", [function to get all books?]);
+document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
 
 var booksArray = [
   new Book({title:"Coders at Work: Reflections on the Craft of Programming", author:"Peter Seibel", numberOfPages: 1303, publishDate: "01/01/1999"}),
