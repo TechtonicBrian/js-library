@@ -2,11 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My Local Library</title>
+    <title>My Local (Digital) Library</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- <script src="library.js"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="library.js"></script>
   </head>
+
   <body class="container">
     <!-- Main Div -->
     <div>
@@ -20,88 +22,134 @@
             <h2 class="welcome">into the clouds</h2>
           </div>
           <div class="col-md-9">
-            <h3>My Local Library</h3>
-            <a href="#" class="admin">Admin</a>
+            <h3>My Local (Digital) Library</h3>
+            <a href="javascript:void(0)" class="admin" id="toggleAdmin">Admin</a><br>
           </div>
         </header>
       </div><!--End Header Row-->
 
-      <section class="adminMgmt">
+      <section id="adminMgmt">
         <!-- Add Book(s) form -->
-        <div class="row.admin">
+        <div class="row">
           <div class="col-md-12">
-            <label>Add book</label>
-            <form>
-              <label>Title:</label> <input type="text" placeholder="Coding for Dummies">
-              <label>Author:</label> <input type="text" placeholder="Peter Seibel">
-              <label>Number of pages:</label> <input type="text" placeholder="963">
-              <label>Publish date:</label> <input type="text" placeholder="01/01/1999">
-              <button type="button">Add</button>
-            </form>
-          </div>
-        </div><!--End Add Book(s) form-->
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <label>Add book(s)</label>
+              </div>
+            </div>
+            <br>
 
-        <!-- Remove Book(s) form -->
-        <div class="row.admin">
-          <div class="col-md-12">
-            <label>Remove book</label>
-            <select>
-              <option value="Title">by Title</option>
-              <option value="Author">by Author</option>
-            </select>
-            <form>
-              <label>Title:</label> <input type="text" placeholder="Coding for Dummies">
-              <label>Author:</label> <input type="text" placeholder="Peter Seibel">
-              <button type="button">Remove</button>
-            </form>
+            <div class="row" id="addMore">
+              <div class="row" id="appMore">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                  <form class="formStyle" id="addForm">
+                    <label>Title:</label> <input type="text" class="inputStyle"><br>
+                    <label>Author:</label> <input type="text" class="inputStyle"><br>
+                    <label>Number of pages:</label> <input type="text"><br>
+                    <label>Publish date:</label> <input type="text" placeholder=" mm/dd/yyyy"><br><br>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <button type="button" class="addAnother">+</button><br><br>
+                <button type="button">Add to shelf</button>
+              </div>
+            </div>
           </div>
-        </div><!--End Remove Book(s) form-->
+        </div><!--End Add Book(s) -->
+
+        <!-- Remove Book(s) -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <label>Remove book(s) by</label>
+                <select name="select" class="removeWhat">
+                  <option selected disabled hidden>Select option</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <form class="toggleRemove title">
+                  <label>Title:</label> <input type="text" class="inputStyle">
+                  <br><br>
+                  <button type="button">Remove from shelf</button>
+                </form>
+                <form class="toggleRemove author">
+                  <label>Author:</label> <input type="text" class="inputStyle">
+                  <br><br>
+                  <button type="button">Remove from shelf</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div><!--End Remove Book(s) -->
+        
       </section><!--End adminMgmt-->
 
-      <!-- Basic Search Row to retun book object(s) -->
       <div class="row">
         <div class="col-md-12">
-          <form class="formStyle">
-            <label>Search for</label>
-            <input type="text" class="inputStyle" placeholder="What do you want to search for?">
-            <select>
-              <option value="Keyword">by Keyword</option>
-              <option value="Title">by Title</option>
-              <option value="Author">by Author</option>
-            </select>
-            <button type="button" id="keywordSearch">GO</button>
-          </form>
-        </div>
-      </div><!--End Basic Search Row-->
-
-      <!-- Browse & Spotlight on Authors-->
-      <div class="row">
-        <div class="col-md-12">
-          <section class="browse">
-            <label>Browse</label>
-            <button type="button" id="getAllBooks">all books</button>
-            <button type="button" id="getRandomBook">I'm feeling lucky!</button>
-          </section>
-          <section class="spotlight">
-            <label>Spotlight</label>
-            <button type="button">all authors</button>
-            <button type="button">I'm feeling lucky!</button>
-          </section>
+          <h4>Discovery happens here! ...the SKY is my limit...</h4>
         </div>
       </div>
+
+      <!-- Basic Search Row -->
+        <div class="row">
+          <div class="col-md-12">
+            <form class="formStyle">
+              <label>Search for</label>
+              <input type="text" class="inputStyle" placeholder=" What do you want to search for?">
+              <select>
+                <option value="Keyword">by Keyword</option>
+                <option value="Title">by Title</option>
+                <option value="Author">by Author</option>
+              </select>
+              <button type="button" id="keywordSearch">GO</button>
+            </form>
+          </div>
+        </div><!--End Basic Search Row-->
+
+        <!-- Browse & Spotlight on Authors-->
+        <div class="row">
+          <div class="col-md-12">
+            <section class="browse">
+              <label>Browse</label>
+              <button type="button" id="getAllBooks">all books</button>
+              <button type="button" id="getRandomBook">I'm feeling lucky!</button>
+            </section>
+            <section class="spotlight">
+              <label>Spotlight</label>
+              <button type="button">all authors</button>
+              <button type="button">I'm feeling lucky!</button>
+            </section>
+          </div>
+        </div><!--End Browse & Spotlight on Authors-->
 
       <!-- Results Row that should begin with all book objects listed-->
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-          <section class="centerStage">
+          <div class="centerStage">
             <article class="bookSkeleton" id="bookResults">
-              <h4>Title:</h4>
-              <h4>Author:</h4>
-              <h4>Number of pages:</h4>
-              <h4>Publish date:</h4>
+              <h5>Title:</h5>
+              <h5>Author:</h5>
+              <h5>Number of pages:</h5>
+              <h5>Publish date:</h5>
+              <a href="javascript:void(0)">Download</a>
             </article>
-          </section>
+          </div>
         </div>
         <div class="col-md-2"></div>
       </div><!--End Results Row-->

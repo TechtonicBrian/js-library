@@ -8,16 +8,19 @@ button {
   background-color: #e1bee7;
 }
 
+a:link, a:visited {
+  float: right;
+  text-decoration: inherit;
+}
+
+h4 {
+  text-align: center;
+  color: #ff6f00;
+  font-size: 2em;
+}
+
 .welcome {
   margin: 0;
-}
-
-.admin {
-  float: right;
-}
-
-.adminMgmt {
-  display: none;
 }
 
 .col-md-12 {
@@ -34,6 +37,11 @@ button {
 
 .inputStyle {
   min-width: 50%;
+}
+
+.toggleRemove {
+  display: none;
+  width: 1200px;
 }
 
 .browse {

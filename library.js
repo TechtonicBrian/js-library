@@ -57,7 +57,7 @@ Library.prototype.getRandomBook = function() {
     return null;
   }
     return this.books[Math.floor(Math.random()*this.books.length)]; //otherwise, return random book object
-    //document.getElementById("bookResults").innerHTML = 
+    //document.getElementById("bookResults").innerHTML =
 };
 
 //GetBooksByTitle functionality
@@ -112,16 +112,27 @@ Library.prototype.getRandomAuthorName = function() {
     return this.books[Math.floor(Math.random()*this.books.length)].author; //otherwise, return random authorName string
 };
 
+// Robust Search functionality (by Keyword) - NEEDS ATTENTION
+Library.prototype.getBooksByKeyword = function(keyword) {
+  var temp = [];
+  for (var i = 0; i < this.books.length; i++) {
+    if (this.books[i].title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || this.books[i].author.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
+      temp.push(this.books[i]);
+    }
+  }
+  return temp;
+};
+
 // Integration
 
-document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-document.getElementById("getRandomBook").addEventListener("click, this.getRandomBook");
-document.getElementById("getAuthors").addEventListener("click", [function to get all books?]);
-document.getElementById("getRandomAuthorName").addEventListener("click", [function to get all books?]);
-document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+// document.getElementById("getRandomBook").addEventListener("click, this.getRandomBook");
+// document.getElementById("getAuthors").addEventListener("click", [function to get all books?]);
+// document.getElementById("getRandomAuthorName").addEventListener("click", [function to get all books?]);
+// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
+// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
 
 var booksArray = [
   new Book({title:"Coders at Work: Reflections on the Craft of Programming", author:"Peter Seibel", numberOfPages: 1303, publishDate: "01/01/1999"}),
@@ -135,3 +146,27 @@ var gBookTwo = new Book({title:"Javascript: the definitive guide", author:"David
 var gBookThree = new Book({title:"Front-end web development: the Big Nerd Ranch Guide", author:"Chris Aquino", numberOfPages: 546, publishDate: "01/01/1999"});
 var gBookFour = new Book({title:"Web Development Foundations: Full-Stack vs Front-End", author:"Ray Villalobos", numberOfPages: 1010, publishDate: "01/01/1999"});
 var gBookFive = new Book({title:"Getting a coding job for dummies", author:"Nikhil Abraham", numberOfPages: 297, publishDate: "01/01/1999"});
+
+$(document).ready(function(){
+  // Admin
+  $("#adminMgmt").hide();
+  $("#toggleAdmin").click(function(){
+    $("#adminMgmt").toggle(500);
+    alert("Thank you for coming to the Admin area of this library, which is intended for library employees & volunteers only.");
+  });
+
+  // Add more books
+  $(".addAnother").click(function() {
+    $("#appMore:last").clone().appendTo($("#addMore"));
+  });
+
+  // Remove title or author
+  $(function() {
+    var $select = $(".removeWhat"),
+        $forms = $(".toggleRemove");
+    $select.on("change", function() {
+      var value = "." + $(this).val();
+      $forms.show().not(value).hide();
+    });
+  });
+});
