@@ -3,20 +3,47 @@ var Library = function() {
   this.books = new Array();
 };
 
-//Library instantiation, creating empty books array
-this.library = new Library();
-
 //Book constructor, with object properties - AKA Book blueprint
-var Book = function(objectWithArgs) {
-  this.title = objectWithArgs.title;
-  this.author = objectWithArgs.author;
-  this.numberOfPages = objectWithArgs.numberOfPages;
-  this.publishDate = new Date(objectWithArgs.publishDate);
+var Book = function(oArgs) {
+  this.title = oArgs.title;
+  this.author = oArgs.author;
+  this.numberOfPages = oArgs.numberOfPages;
+  this.publishDate = new Date(oArgs.publishDate);
+};
+
+Library.prototype.init = function() {
+  this._bindEvents();
+
+  // Admin
+  $("#adminMgmt").hide();
+  $("#toggleAdmin").on("click", function(){
+    $("#adminMgmt").toggle(500);
+  });
+
+  // Add more books
+  $(".addAnother").on("click", function() {
+    $("#appMore:last").clone().appendTo($("#addMore"));
+  });
+
+  // Remove title or author
+  $(function() {
+    var $select = $(".removeWhat"),
+        $forms = $(".toggleRemove");
+    $select.on("change", function() {
+      var value = "." + $(this).val();
+      $forms.show().not(value).hide();
+    });
+  });
+};
+
+Library.prototype._bindEvents = function() {
+  $("#addBookButton").on("click", $.proxy(this._handleAddBook, this));
 };
 
 //AddBook functionality
 Library.prototype.addBook = function(book) {
   for (var i = 0; i < this.books.length; i++) { //loop/iterate through all indeces of books
+    // debugger;
     if (this.books[i].title === book.title) { //check if title of incoming book matches title of current index in books
       return false;
     }
@@ -24,6 +51,16 @@ Library.prototype.addBook = function(book) {
   this.books.push(book); //otherwise, add book object
   return true;
 };
+
+Library.prototype._handleAddBook = function(oArgs) {
+  var newBook = new Book(oArgs);
+    newBook.title = $("#addTitle").val();
+    newBook.author = $("#addAuthor").val();
+    newBook.numberOfPages = $("#addNumberOfPages").val();
+    newBook.publishDate = $("#addPublishDate").val();
+  this.addBook(newBook);
+};
+
 
 //RemoveBooksByTitle functionality
 Library.prototype.removeBooksByTitle = function(title) {
@@ -123,17 +160,6 @@ Library.prototype.getBooksByKeyword = function(keyword) {
   return temp;
 };
 
-// Integration
-
-// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-// document.getElementById("getRandomBook").addEventListener("click, this.getRandomBook");
-// document.getElementById("getAuthors").addEventListener("click", [function to get all books?]);
-// document.getElementById("getRandomAuthorName").addEventListener("click", [function to get all books?]);
-// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-// document.getElementById("getAllBooks").addEventListener("click", [function to get all books?]);
-
 var booksArray = [
   new Book({title:"Coders at Work: Reflections on the Craft of Programming", author:"Peter Seibel", numberOfPages: 1303, publishDate: "01/01/1999"}),
   new Book({title:"Code Complete: A Practical Handbook of Software Construction", author:"Steve McConnell", numberOfPages: 336, publishDate: "01/01/1999"}),
@@ -147,26 +173,10 @@ var gBookThree = new Book({title:"Front-end web development: the Big Nerd Ranch 
 var gBookFour = new Book({title:"Web Development Foundations: Full-Stack vs Front-End", author:"Ray Villalobos", numberOfPages: 1010, publishDate: "01/01/1999"});
 var gBookFive = new Book({title:"Getting a coding job for dummies", author:"Nikhil Abraham", numberOfPages: 297, publishDate: "01/01/1999"});
 
-$(document).ready(function(){
-  // Admin
-  $("#adminMgmt").hide();
-  $("#toggleAdmin").click(function(){
-    $("#adminMgmt").toggle(500);
-    alert("Thank you for coming to the Admin area of this library, which is intended for library employees & volunteers only.");
-  });
 
-  // Add more books
-  $(".addAnother").click(function() {
-    $("#appMore:last").clone().appendTo($("#addMore"));
-  });
 
-  // Remove title or author
-  $(function() {
-    var $select = $(".removeWhat"),
-        $forms = $(".toggleRemove");
-    $select.on("change", function() {
-      var value = "." + $(this).val();
-      $forms.show().not(value).hide();
-    });
-  });
+
+$(function(){
+  window.library = new Library()
+  window.library.init()
 });

@@ -45,10 +45,10 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-9">
                   <form class="formStyle" id="addForm">
-                    <label>Title:</label> <input type="text" class="inputStyle"><br>
-                    <label>Author:</label> <input type="text" class="inputStyle"><br>
-                    <label>Number of pages:</label> <input type="text"><br>
-                    <label>Publish date:</label> <input type="text" placeholder=" mm/dd/yyyy"><br><br>
+                    <label>Title:</label> <input type="text" class="inputStyle" id="addTitle"><br>
+                    <label>Author:</label> <input type="text" class="inputStyle" id="addAuthor"><br>
+                    <label>Number of pages:</label> <input type="text" id="addNumberOfPages"><br>
+                    <label>Publish date:</label> <input type="text" placeholder=" mm/dd/yyyy" id="addPublishDate"><br><br>
                   </form>
                 </div>
               </div>
@@ -58,7 +58,7 @@
               <div class="col-md-3"></div>
               <div class="col-md-9">
                 <button type="button" class="addAnother">+</button><br><br>
-                <button type="button">Add to shelf</button>
+                <button type="submit" id="addBookButton" class="addBookToShelf">Add to shelf</button>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div><!--End Remove Book(s) -->
-        
+
       </section><!--End adminMgmt-->
 
       <div class="row">
@@ -139,19 +139,17 @@
 
       <!-- Results Row that should begin with all book objects listed-->
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="centerStage">
-            <article class="bookSkeleton" id="bookResults">
-              <h5>Title:</h5>
-              <h5>Author:</h5>
-              <h5>Number of pages:</h5>
-              <h5>Publish date:</h5>
-              <a href="javascript:void(0)">Download</a>
-            </article>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-2">
+              <label>Results here:</label>
+            </div>
+            <div class="col-md-8">
+              <div class="well"></div>
+            </div>
+            <div class="col-md-2"></div>
           </div>
         </div>
-        <div class="col-md-2"></div>
       </div><!--End Results Row-->
 
       <!-- Footer Row -->
