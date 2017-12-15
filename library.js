@@ -29,7 +29,7 @@ Library.prototype.init = function() {
     $("#addBookButton").hide();
   });
 
-  // Remove title or author selection
+  // Remove title or author form selection
   $(function() {
     var $select = $("#removeBySelector"),
         $forms = $(".toggleRemove");
@@ -39,12 +39,16 @@ Library.prototype.init = function() {
     });
   });
 
-  // Basic search button management - NEEDS ATTENTION
-  $("#searchByTitleButton").hide();
-  $("#searchByAuthorButton").hide();
-  $("#").on("click", function() {
-    $("#")
+  // Basic search form selection - NEEDS ATTENTION
+  $(function() {
+    var $select = $("#searchBySelector"),
+        $forms = $(".toggleBasicSearchBy");
+    $select.on("change", function() {
+      var value = "." + $(this).val();
+      $forms.show().not(value).hide();
+    });
   });
+
 };
 
 //Event handlers that bind events to functions

@@ -84,12 +84,12 @@
               <div class="col-md-3"></div>
               <div class="col-md-9">
                 <form class="toggleRemove title">
-                  <label>Title:</label> <input type="text" class="inputStyle">
+                  <label>Title:</label> <input type="text" class="inputStyle" placeholder=" Removes all books with with exact title match!">
                   <br><br>
                   <button type="button" id="removeByTitleButton">Remove from virtual shelf</button>
                 </form>
                 <form class="toggleRemove author">
-                  <label>Author:</label> <input type="text" class="inputStyle">
+                  <label>Author:</label> <input type="text" class="inputStyle" placeholder=" Removes all books with exact author match!">
                   <br><br>
                   <button type="button" id="removeByAuthorButton">Remove from virtual shelf</button>
                 </form>
@@ -109,34 +109,63 @@
       <!-- Basic Search Row -->
         <div class="row">
           <div class="col-md-12">
-            <form class="formStyle">
-              <label>Search for</label>
-              <input type="text" class="inputStyle" placeholder=" What do you want to search for?">
-              <select>
-                <option id="searchByKeywordOption" value="Keyword">by Keyword</option>
-                <option id="searchByTitleOption" value="Title">by Title</option>
-                <option id="searchByAuthorOption" value="Author">by Author</option>
-              </select>
-              <button type="button" id="searchByKeywordButton">GO</button>
-              <button type="button" id="searchByTitleButton">GO</button>
-              <button type="button" id="searchByAuthorButton">GO</button>
-            </form>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <label>Search books by</label>
+                <select name="select" id="searchBySelector">
+                  <option selected disabled hidden>Select option</option>
+                  <option value="searchByKeywordOption">by Keyword</option>
+                  <option value="searchByTitleOption">by Title</option>
+                  <option value="searchByAuthorOption">by Author</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <form class="toggleBasicSearchBy keyword">
+                  <input type="text" class="inputStyle" placeholder=" What keyword do you want to search for?">
+                  <button type="button" id="searchByKeywordButton">GO GO KEYWORD</button>
+                </form>
+                <form class="toggleBasicSearchBy title">
+                  <input type="text" class="inputStyle" placeholder=" What title do you want to search for?">
+                  <button type="button" id="searchByTitleButton">GO GO TITLE</button>
+                </form>
+                <form class="toggleBasicSearchBy author">
+                  <input type="text" class="inputStyle" placeholder=" What author do you want to search for?">
+                  <button type="button" id="searchByAuthorButton">GO GO AUTHOR</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div><!--End Basic Search Row-->
 
         <!-- Browse & Spotlight on Authors-->
         <div class="row">
           <div class="col-md-12">
-            <section class="browse">
-              <label>Browse</label>
-              <button type="button" id="getAllBooksButton">all books</button>
-              <button type="button" id="getRandomBookButton">I'm feeling lucky!</button>
-            </section>
-            <section class="spotlight">
-              <label>Spotlight</label>
-              <button type="button" id="getAllAuthorsButton">all authors</button>
-              <button type="button" id="getRandomAuthorNameButton">I'm feeling lucky!</button>
-            </section>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <section class="browse">
+                  <label>Browse</label>
+                  <button type="button" id="getAllBooksButton">all the books</button>
+                  <h5>...or...</h5>
+                  <button type="button" id="getRandomBookButton">I'm feeling lucky!</button>
+                </section>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <section class="spotlight">
+                  <label>Spotlight</label>
+                  <button type="button" id="getAllAuthorsButton">all the authors</button>
+                  <h5>...or...</h5>
+                  <button type="button" id="getRandomAuthorNameButton">I'm feeling lucky!</button>
+                </section>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
           </div>
         </div><!--End Browse & Spotlight on Authors-->
 
@@ -148,7 +177,7 @@
               <label>Results here:</label>
             </div>
             <div class="col-md-8">
-              <div class="well"></div>
+              <div class="well">BOOK CARDS ADDED HERE</div>
             </div>
             <div class="col-md-2"></div>
           </div>

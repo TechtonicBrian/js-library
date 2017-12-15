@@ -44,12 +44,17 @@ h4 {
   width: 1200px;
 }
 
+.toggleBasicSearchBy {
+  display: none;
+  width: 1200px;
+}
+
 .browse {
-  float: left;
+  float: right;
 }
 
 .spotlight {
-  float: right;
+  float: left;
 }
 
 .center {
