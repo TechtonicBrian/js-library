@@ -40,8 +40,8 @@
             </div>
             <br>
 
-            <div class="row" id="addMore">
-              <div class="row" id="appMore">
+            <div class="row" id="addBooksRow">
+              <div class="row" id="oneMoreBookForm">
                 <div class="col-md-3"></div>
                 <div class="col-md-9">
                   <form class="formStyle" id="addForm">
@@ -57,8 +57,9 @@
             <div class="row">
               <div class="col-md-3"></div>
               <div class="col-md-9">
-                <button type="button" class="addAnother">+</button><br><br>
-                <button type="submit" id="addBookButton" class="addBookToShelf">Add to shelf</button>
+                <button type="button" id="oneMoreBookButton">+</button><br><br>
+                <button type="button" id="addBookButton">Add to virtual shelf</button>
+                <button type="button" id="addBooksButton">Add to virtual shelf</button>
               </div>
             </div>
           </div>
@@ -71,7 +72,7 @@
               <div class="col-md-1"></div>
               <div class="col-md-11">
                 <label>Remove book(s) by</label>
-                <select name="select" class="removeWhat">
+                <select name="select" id="removeBySelector">
                   <option selected disabled hidden>Select option</option>
                   <option value="title">Title</option>
                   <option value="author">Author</option>
@@ -85,12 +86,12 @@
                 <form class="toggleRemove title">
                   <label>Title:</label> <input type="text" class="inputStyle">
                   <br><br>
-                  <button type="button">Remove from shelf</button>
+                  <button type="button" id="removeByTitleButton">Remove from virtual shelf</button>
                 </form>
                 <form class="toggleRemove author">
                   <label>Author:</label> <input type="text" class="inputStyle">
                   <br><br>
-                  <button type="button">Remove from shelf</button>
+                  <button type="button" id="removeByAuthorButton">Remove from virtual shelf</button>
                 </form>
               </div>
             </div>
@@ -112,11 +113,13 @@
               <label>Search for</label>
               <input type="text" class="inputStyle" placeholder=" What do you want to search for?">
               <select>
-                <option value="Keyword">by Keyword</option>
-                <option value="Title">by Title</option>
-                <option value="Author">by Author</option>
+                <option id="searchByKeywordOption" value="Keyword">by Keyword</option>
+                <option id="searchByTitleOption" value="Title">by Title</option>
+                <option id="searchByAuthorOption" value="Author">by Author</option>
               </select>
-              <button type="button" id="keywordSearch">GO</button>
+              <button type="button" id="searchByKeywordButton">GO</button>
+              <button type="button" id="searchByTitleButton">GO</button>
+              <button type="button" id="searchByAuthorButton">GO</button>
             </form>
           </div>
         </div><!--End Basic Search Row-->
@@ -126,13 +129,13 @@
           <div class="col-md-12">
             <section class="browse">
               <label>Browse</label>
-              <button type="button" id="getAllBooks">all books</button>
-              <button type="button" id="getRandomBook">I'm feeling lucky!</button>
+              <button type="button" id="getAllBooksButton">all books</button>
+              <button type="button" id="getRandomBookButton">I'm feeling lucky!</button>
             </section>
             <section class="spotlight">
               <label>Spotlight</label>
-              <button type="button">all authors</button>
-              <button type="button">I'm feeling lucky!</button>
+              <button type="button" id="getAllAuthorsButton">all authors</button>
+              <button type="button" id="getRandomAuthorNameButton">I'm feeling lucky!</button>
             </section>
           </div>
         </div><!--End Browse & Spotlight on Authors-->
