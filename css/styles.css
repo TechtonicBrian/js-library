@@ -50,11 +50,11 @@ h4 {
 }
 
 .browse {
-  float: right;
+  float: left;
 }
 
 .spotlight {
-  float: left;
+  float: right;
 }
 
 .center {
