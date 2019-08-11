@@ -2,9 +2,195 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My Title</title>
+    <title>My Local (Digital) Library</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="library.js"></script>
   </head>
-  <body>
-    <script src="coreCode.js"></script>
+
+  <body class="container">
+    <!-- Main Div -->
+    <div>
+      <br>
+
+      <!-- Header Row -->
+      <div class="row">
+        <header>
+          <div class="col-md-3">
+            <h1 class="welcome">WELCOME</h1>
+            <h2 class="welcome">into the clouds</h2>
+          </div>
+          <div class="col-md-9">
+            <h3>My Local (Digital) Library</h3>
+            <a href="javascript:void(0)" class="admin" id="toggleAdmin">Admin</a><br>
+          </div>
+        </header>
+      </div><!--End Header Row-->
+
+      <section id="adminMgmt">
+        <!-- Add Book(s) form -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <label>Add book(s)</label>
+              </div>
+            </div>
+            <br>
+
+            <div class="row" id="addBooksRow">
+              <div class="row" id="oneMoreBookForm">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                  <form class="formStyle" id="addForm">
+                    <label>Title:</label> <input type="text" class="inputStyle" id="addTitle"><br>
+                    <label>Author:</label> <input type="text" class="inputStyle" id="addAuthor"><br>
+                    <label>Number of pages:</label> <input type="text" id="addNumberOfPages"><br>
+                    <label>Publish date:</label> <input type="text" placeholder=" mm/dd/yyyy" id="addPublishDate"><br><br>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <button type="button" id="oneMoreBookButton">+</button><br><br>
+                <button type="button" id="addBookButton">Add to virtual shelf</button>
+                <button type="button" id="addBooksButton">Add to virtual shelf</button>
+              </div>
+            </div>
+          </div>
+        </div><!--End Add Book(s) -->
+
+        <!-- Remove Book(s) -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <label>Remove book(s) by</label>
+                <select name="select" id="removeBySelector">
+                  <option selected disabled hidden>Select option</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <form class="toggleRemove title">
+                  <label>Title:</label> <input type="text" class="inputStyle" placeholder=" Removes all books with with exact title match!">
+                  <br><br>
+                  <button type="button" id="removeByTitleButton">Remove from virtual shelf</button>
+                </form>
+                <form class="toggleRemove author">
+                  <label>Author:</label> <input type="text" class="inputStyle" placeholder=" Removes all books with exact author match!">
+                  <br><br>
+                  <button type="button" id="removeByAuthorButton">Remove from virtual shelf</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div><!--End Remove Book(s) -->
+
+      </section><!--End adminMgmt-->
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Discovery happens here! ...the SKY is my limit...</h4>
+        </div>
+      </div>
+
+      <!-- Basic Search Row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-11">
+                <p>Looking to discover a digital book? Select an option to search by keyword, title, or author. All books that match your criteria will be displayed below.</p>
+                <label>Search books by</label>
+                <select name="select" id="searchBySelector">
+                  <option selected disabled hidden>Select option</option>
+                  <option value="searchByKeywordOption">by Keyword</option>
+                  <option value="searchByTitleOption">by Title</option>
+                  <option value="searchByAuthorOption">by Author</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <form class="toggleBasicSearchBy keyword">
+                  <input type="text" class="inputStyle" placeholder=" What keyword do you want to search for?">
+                  <button type="button" id="searchByKeywordButton">GO GO KEYWORD</button>
+                </form>
+                <form class="toggleBasicSearchBy title">
+                  <input type="text" class="inputStyle" placeholder=" What title do you want to search for?">
+                  <button type="button" id="searchByTitleButton">GO GO TITLE</button>
+                </form>
+                <form class="toggleBasicSearchBy author">
+                  <input type="text" class="inputStyle" placeholder=" What author do you want to search for?">
+                  <button type="button" id="searchByAuthorButton">GO GO AUTHOR</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div><!--End Basic Search Row-->
+
+        <!-- Browse & Spotlight on Authors-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <section class="browse">
+                  <label>Browse</label>
+                  <button type="button" id="getAllBooksButton">all the books</button>
+                  <button type="button" id="getRandomBookButton">Show me a random book.</button>
+                </section>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <section class="spotlight">
+                  <label>Spotlight</label>
+                  <button type="button" id="getAllAuthorsButton">all authors</button>
+                  <button type="button" id="getRandomAuthorNameButton">Show me a random author.</button>
+                </section>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
+          </div>
+        </div><!--End Browse & Spotlight on Authors-->
+
+      <!-- Results Row that should begin with all book objects listed-->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <label>Results</label><br>
+              <div class="well">BOOK CARDS WILL BE ADDED HERE</div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div><!--End Results Row-->
+
+      <!-- Footer Row -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <footer class="center">&copy; 2017 My Local County - All rights reserved</footer>
+        </div>
+        <div class="col-md-1"></div>
+      </div><!--End Footer Row-->
+
+    </div><!--End Main Div-->
   </body>
 </html>

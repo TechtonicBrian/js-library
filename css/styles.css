@@ -1,0 +1,67 @@
+body {
+  background-image: url(../images/cloudBackground.jpg);
+  background-repeat: repeat;
+  background-blend-mode: hard-light;
+}
+
+button {
+  background-color: #e1bee7;
+}
+
+a:link, a:visited {
+  float: right;
+  text-decoration: inherit;
+}
+
+h4 {
+  text-align: center;
+  color: #ff6f00;
+  font-size: 2em;
+}
+
+.welcome {
+  margin: 0;
+}
+
+.col-md-12 {
+  margin-top: 10px;
+  padding: 30px;
+  border-top: 5px solid blanchedalmond;
+  border-bottom: 5px solid blanchedalmond;
+  background-color: palegoldenrod;
+}
+
+.formStyle {
+  width: 1200px;
+}
+
+.inputStyle {
+  min-width: 50%;
+}
+
+.toggleRemove {
+  display: none;
+  width: 1200px;
+}
+
+.toggleBasicSearchBy {
+  display: none;
+  width: 1200px;
+}
+
+.browse {
+  float: left;
+}
+
+.spotlight {
+  float: right;
+}
+
+.center {
+  text-align: center;
+  border-top: 2px solid lightgray;
+}
+
+.col-md-10 {
+  margin-top: 10px;
+}
